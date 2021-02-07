@@ -22,17 +22,24 @@ xys_2 = [xys_1[0],xys_1[1]+(a*sqrt(3)/3),xys_1[4],xys_1[1]+a*sqrt(3)/3-a*sqrt(3)
 def my_setup():
     size(window_width, window_height)
     stroke(255)
-       
+
+dwn = 0
+i = 0
+
 def my_draw():
-    background(0,0,180)
-    dwn = 0
-    while dwn < 950:
-        for i in range(1,940,a+6):
-            fill(10+i/5,10+i/5,0)
-            no_stroke()
-            triangle(xys_1[0]+i,xys_1[1]+dwn,xys_1[2]+i,xys_1[3]+dwn,xys_1[4]+i,xys_1[5]+dwn)
-            triangle(xys_2[0]+i,xys_2[1]+dwn,xys_2[2]+i,xys_2[3]+dwn,xys_2[4]+i,xys_2[5]+dwn)
-        dwn = dwn + 61
+    #background(0,150,150)
+    global dwn
+    global i
+    fill(10+i/5,10+i/5,0)
+    no_stroke()
+    triangle(xys_1[0]+i,xys_1[1]+dwn,xys_1[2]+i,xys_1[3]+dwn,xys_1[4]+i,xys_1[5]+dwn)
+    triangle(xys_2[0]+i,xys_2[1]+dwn,xys_2[2]+i,xys_2[3]+dwn,xys_2[4]+i,xys_2[5]+dwn)
+    i = i + 56
+    if i > 940:
+        i = 1
+        dwn =dwn + 50
+        if dwn>950:
+            no_loop()
 
 if __name__ == '__main__':
     run(sketch_setup=my_setup, sketch_draw=my_draw)
